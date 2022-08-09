@@ -14,6 +14,7 @@ def createWin():
     screen.fill(background_colour)
     pygame.display.flip()
     running = True
+    createLabel()
 
 
     while running:
@@ -24,18 +25,23 @@ def createWin():
                 running = False
 
 
+
 def createLabel():
     display_surface = pygame.display.set_mode((X, Y))
     pygame.display.set_caption('Show Text')
-    font = pygame.font.Font('Arial Rounded MT Bold', 350)
+    font = pygame.font.Font('C:\\Windows\\Fonts\\ARLRDBD.TTF', 350)
     text = font.render('GeeksForGeeks', True, green, blue)
     textRect = text.get_rect()
     textRect.center = (X // 2, Y // 2)
-    while True:
-        display_surface.blit(text, textRect)
+    display_surface.blit(text, textRect)
+    # while True:
+    #     display_surface.blit(text, textRect)
 
 
 def main():
     createWin()
     return
-main()
+
+
+if __name__ == '__main__':
+    main()
