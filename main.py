@@ -1,47 +1,33 @@
 import pygame
-pygame.init()
-white = (255, 255, 255)
-green = (0, 255, 0)
-blue = (0, 0, 128)
-X = 400
-Y = 400
 
 
-def createWin():
-    background_colour = (234, 212, 252)
-    screen = pygame.display.set_mode((854, 480))
-    pygame.display.set_caption('Super Clicker')
-    screen.fill(background_colour)
-    pygame.display.flip()
-    running = True
-    createLabel()
+score = 1
 
-
-    while running:
-
-        for event in pygame.event.get():
-
-            if event.type == pygame.QUIT:
-                running = False
-
-
-
-def createLabel():
+def startup():
+    pygame.init()
+    white = (255, 255, 255)
+    green = (0, 255, 0)
+    blue = (0, 0, 128)
+    X = 400
+    Y = 400
     display_surface = pygame.display.set_mode((X, Y))
     pygame.display.set_caption('Show Text')
-    font = pygame.font.Font('C:\\Windows\\Fonts\\ARLRDBD.TTF', 350)
-    text = font.render('GeeksForGeeks', True, green, blue)
+    font = pygame.font.Font('freesansbold.ttf', 32)
+    text = font.render(str(score), True, green, blue)
     textRect = text.get_rect()
     textRect.center = (X // 2, Y // 2)
-    display_surface.blit(text, textRect)
-    # while True:
-    #     display_surface.blit(text, textRect)
+    while True:
+        display_surface.fill(white)
+        display_surface.blit(text, textRect)
+        for event in pygame.event.get():
+            if event.type == pygame.QUIT:
+                pygame.quit()
+                quit()
+            pygame.display.update()
 
 
 def main():
-    createWin()
-    return
-
+    startup()
 
 if __name__ == '__main__':
     main()
